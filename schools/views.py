@@ -1,4 +1,5 @@
-from rest_framework import generics, response, status
+from django.shortcuts import get_object_or_404
+from rest_framework import generics, response, status, viewsets
 
 from schools import models, serializers
 
@@ -43,10 +44,15 @@ class SchoolDestroyView(generics.DestroyAPIView):
         return response.Response(data={"msg": "successefully deleted"}, status=status.HTTP_204_NO_CONTENT)
 
 
-class SchoolRetrieveView(generics.RetrieveAPIView):
+class SchoolRetrieveListView(viewsets.ViewSet):
 
-    queryset = models.School.objects.all()
-    serializer_class = serializers.SchoolDetailSerializer
+    def list(self, request):
+        queryset = models.School.objects.all()
+        serializer = serializers.SchoolDetailSerializer(queryset, many=True)
+        return response.Response(serializer.data)
 
-    def get(self, request, *args, **kwargs):
-        return super().get(request, *args, **kwargs)
+    def retrieve(self, request, pk=None):
+        queryset = models.School.objects.all()
+        student = get_object_or_404(queryset, pk=pk)
+        serializer = serializers.SchoolDetailSerializer(student)
+        return response.Response(serializer.data)
