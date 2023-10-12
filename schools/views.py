@@ -1,14 +1,9 @@
-# from django.shortcuts import get_object_or_404
-from rest_framework import status, views
-from rest_framework.generics import (DestroyAPIView, ListAPIView,
-                                     ListCreateAPIView, RetrieveAPIView)
-from rest_framework.response import Response
+from rest_framework import generics, response, status
 
-from person.models import Student
 from schools import models, serializers
 
 
-class SchoolListCreateView(ListCreateAPIView):
+class SchoolListCreateView(generics.ListCreateAPIView):
 
     queryset = models.School.objects.all()
     serializer_class = serializers.SchoolsSerializer
@@ -21,10 +16,10 @@ class SchoolListCreateView(ListCreateAPIView):
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)  # NOQA
+        return response.Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)  # NOQA
 
 
-class SchoolsSearchListView(ListAPIView):
+class SchoolsSearchListView(generics.ListAPIView):
 
     serializer_class = serializers.SchoolsSerializer
 
@@ -37,17 +32,18 @@ class SchoolsSearchListView(ListAPIView):
         return queryset
 
 
-class SchoolDestroyView(DestroyAPIView):
+class SchoolDestroyView(generics.DestroyAPIView):
 
     queryset = models.School.objects.all()
     serializer_class = serializers.SchoolsSerializer
 
-    # TODO - give a successfully message
     def delete(self, request, *args, **kwargs):
-        return super().delete(request, *args, **kwargs)
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return response.Response(data={"msg": "successefully deleted"}, status=status.HTTP_204_NO_CONTENT)
 
 
-class SchoolRetrieveView(RetrieveAPIView):
+class SchoolRetrieveView(generics.RetrieveAPIView):
 
     queryset = models.School.objects.all()
     serializer_class = serializers.SchoolDetailSerializer
