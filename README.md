@@ -78,6 +78,6 @@ $ http://0.0.0.0:8000/api/schema/docs/
 Finally, commands have been created in person > management > command and schools > management > command:
 
 - student_data_loader.py
-- Schools_data_loader.py
+- schools_data_loader.py
 
 These commands will populate the database with fictitious data, making it possible to initiate some tests.
