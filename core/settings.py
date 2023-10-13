@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "django_extensions",
     "person",
     "schools",
+    'drf_spectacular',
+    'drf_spectacular_sidecar',  # required for Django collectstatic discovery
     "rest_framework",
 ]
 
@@ -128,6 +130,22 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+REST_FRAMEWORK = {
+    # YOUR SETTINGS
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "IZI Record Test API",
+    "DESCRIPTION": "Proposed project for technical evaluation in a selection process.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SWAGGER_UI_DIST": "SIDECAR",  # shorthand to use the sidecar instead
+    "SWAGGER_UI_FAVICON_HREF": "SIDECAR",
+    "REDOC_DIST": "SIDECAR",
+    # OTHER SETTINGS
+}
 
 from dynaconf import DjangoDynaconf  # noqa
 
