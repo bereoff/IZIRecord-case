@@ -1,0 +1,269 @@
+openapi: 3.0.3
+info:
+  title: IZI Record Test API
+  version: 1.0.0
+  description: Proposed project for technical evaluation in a selection process.
+paths:
+  /api/v1/person/student/:
+    post:
+      operationId: person_student_create
+      tags:
+      - person
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Students'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Students'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Students'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Students'
+          description: ''
+  /api/v1/person/student/{id}/:
+    delete:
+      operationId: person_student_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - person
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/v1/person/student/search/:
+    get:
+      operationId: person_student_search_retrieve
+      tags:
+      - person
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/v1/person/students/:
+    get:
+      operationId: person_students_retrieve
+      tags:
+      - person
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/v1/person/students/{id}/:
+    get:
+      operationId: person_students_retrieve_2
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - person
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/v1/schools/available-new/:
+    get:
+      operationId: schools_available_new_list
+      tags:
+      - schools
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Schools'
+          description: ''
+    post:
+      operationId: schools_available_new_create
+      tags:
+      - schools
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Schools'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Schools'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Schools'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Schools'
+          description: ''
+  /api/v1/schools/details/:
+    get:
+      operationId: schools_details_retrieve
+      tags:
+      - schools
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/v1/schools/details/{id}/:
+    get:
+      operationId: schools_details_retrieve_2
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - schools
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/v1/schools/school/{id}/:
+    delete:
+      operationId: schools_school_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        required: true
+      tags:
+      - schools
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/v1/schools/search/:
+    get:
+      operationId: schools_search_list
+      tags:
+      - schools
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Schools'
+          description: ''
+components:
+  schemas:
+    Schools:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        updated_at:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          nullable: true
+          maxLength: 255
+        maximum_capacity:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+      required:
+      - created_at
+      - id
+      - updated_at
+    Students:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        first_name:
+          type: string
+          nullable: true
+          maxLength: 255
+        last_name:
+          type: string
+          nullable: true
+          maxLength: 255
+        grade:
+          type: string
+          nullable: true
+          maxLength: 50
+        school:
+          type: string
+          format: uuid
+      required:
+      - id
+      - school
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
