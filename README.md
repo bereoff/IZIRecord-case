@@ -2,7 +2,7 @@
 
 The following steps will be presented for the local project usage.
 
-Prerequisites:
+> ## Prerequisites:
 - Docker
 - Docker-Compose
 
@@ -15,7 +15,7 @@ $ git clone git@github.com:bereoff/IZIRecord-case.git
 
 As the next step, you need to be in the project's root directory, where the docker-compose.yml file is located, and run the command:
 
-[project_root]
+![Project architecture](https://github.com/bereoff/IZIRecord-case/blob/main/images/project-root.png)
 
 ```
 $ docker-compose up --build
@@ -37,7 +37,8 @@ $ docker container ls
 ```
 
 The following output will be displayed:
-[Image]
+
+![List of containers](https://github.com/bereoff/IZIRecord-case/blob/main/images/docker-container-ls-command.png)
 
 Use the container name referring to the Django application in the following command:
 ```
@@ -64,17 +65,17 @@ After these steps and with the services running, it will be possible to access t
 ```
 $ http://0.0.0.0:8000/admin/login/?next=/admin/
 ```
-[Admin Image]
+![Django Admin](https://github.com/bereoff/IZIRecord-case/blob/main/images/django-admin-login-page.png)
 
 And the Swagger documentation for the application:
 ```
 $ http://0.0.0.0:8000/api/schema/docs/
 ```
-[Swagger Image]
+![API Swagger](https://github.com/bereoff/IZIRecord-case/blob/main/images/swagger-page.png)
 
 Finally, commands have been created in person > management > command and schools > management > command:
 
-student_data_loader.py
-Schools_data_loader.py
+- student_data_loader.py
+- Schools_data_loader.py
 
 These commands will populate the database with fictitious data, making it possible to initiate some tests.
