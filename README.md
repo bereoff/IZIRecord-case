@@ -15,7 +15,9 @@ $ git clone git@github.com:bereoff/IZIRecord-case.git
 
 As the next step, you need to be in the project's root directory, where the docker-compose.yml file is located, and run the command:
 
-![Project architecture](https://github.com/bereoff/IZIRecord-case/blob/main/images/project-root.png)
+<p align="center">
+  <img src="https://github.com/bereoff/IZIRecord-case/blob/main/images/project-root.png" />
+</p>
 
 ```
 $ docker-compose up --build
