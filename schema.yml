@@ -6,9 +6,9 @@ info:
 paths:
   /api/v1/person/student/:
     post:
-      operationId: v1_person_student_create
+      operationId: person_student_create
       tags:
-      - v1
+      - person
       requestBody:
         content:
           application/json:
@@ -34,7 +34,7 @@ paths:
           description: ''
   /api/v1/person/student/{id}/:
     delete:
-      operationId: v1_person_student_destroy
+      operationId: person_student_destroy
       parameters:
       - in: path
         name: id
@@ -43,7 +43,7 @@ paths:
           format: uuid
         required: true
       tags:
-      - v1
+      - person
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -53,9 +53,9 @@ paths:
           description: No response body
   /api/v1/person/student/by_name/:
     get:
-      operationId: v1_person_student_by_name_retrieve
+      operationId: person_student_by_name_retrieve
       tags:
-      - v1
+      - person
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -69,9 +69,9 @@ paths:
           description: ''
   /api/v1/person/students/:
     get:
-      operationId: v1_person_students_list
+      operationId: person_students_list
       tags:
-      - v1
+      - person
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -87,7 +87,7 @@ paths:
           description: ''
   /api/v1/person/students/{id}/:
     get:
-      operationId: v1_person_students_retrieve
+      operationId: person_students_retrieve
       parameters:
       - in: path
         name: id
@@ -95,7 +95,7 @@ paths:
           type: string
         required: true
       tags:
-      - v1
+      - person
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -109,9 +109,9 @@ paths:
           description: ''
   /api/v1/schools/available-new/:
     get:
-      operationId: v1_schools_available_new_list
+      operationId: schools_available_new_list
       tags:
-      - v1
+      - schools
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -126,9 +126,9 @@ paths:
                   $ref: '#/components/schemas/Schools'
           description: ''
     post:
-      operationId: v1_schools_available_new_create
+      operationId: schools_available_new_create
       tags:
-      - v1
+      - schools
       requestBody:
         content:
           application/json:
@@ -153,9 +153,9 @@ paths:
           description: ''
   /api/v1/schools/by_name/:
     get:
-      operationId: v1_schools_by_name_list
+      operationId: schools_by_name_list
       tags:
-      - v1
+      - schools
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -171,9 +171,9 @@ paths:
           description: ''
   /api/v1/schools/details/:
     get:
-      operationId: v1_schools_details_list
+      operationId: schools_details_list
       tags:
-      - v1
+      - schools
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -189,7 +189,7 @@ paths:
           description: ''
   /api/v1/schools/details/{id}/:
     get:
-      operationId: v1_schools_details_retrieve
+      operationId: schools_details_retrieve
       parameters:
       - in: path
         name: id
@@ -197,7 +197,7 @@ paths:
           type: string
         required: true
       tags:
-      - v1
+      - schools
       security:
       - cookieAuth: []
       - basicAuth: []
@@ -211,7 +211,7 @@ paths:
           description: ''
   /api/v1/schools/school/{id}/:
     delete:
-      operationId: v1_schools_school_destroy
+      operationId: schools_school_destroy
       parameters:
       - in: path
         name: id
@@ -220,7 +220,7 @@ paths:
           format: uuid
         required: true
       tags:
-      - v1
+      - schools
       security:
       - cookieAuth: []
       - basicAuth: []
