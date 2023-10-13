@@ -1,3 +1,21 @@
 from django.contrib import admin
 
-# Register your models here.
+from person.models import Person, Student
+
+
+class PersonAdmin(admin.ModelAdmin):
+    list_display = ["id", "first_name", "last_name"]
+    list_filter = ["id", "first_name", "last_name"]
+    search_fields = ["id", "first_name", "last_name"]
+    ordering = ["first_name"]
+
+
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ["id", "first_name", "last_name", "grade", "school"]
+    list_filter = ["id", "first_name", "last_name", "grade", "school"]
+    search_fields = ["id", "first_name", "last_name", "grade", "school"]
+    ordering = ["first_name"]
+
+
+admin.site.register(Person, PersonAdmin)
+admin.site.register(Student, StudentAdmin)
