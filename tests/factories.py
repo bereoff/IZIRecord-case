@@ -9,6 +9,7 @@ class SchoolFactory(factory.django.DjangoModelFactory):
         model = School
 
     name = "test_name"
+    maximum_capacity = 400
 
 
 class PersonFactory(factory.django.DjangoModelFactory):
