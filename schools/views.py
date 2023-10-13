@@ -45,6 +45,7 @@ class SchoolDestroyView(generics.DestroyAPIView):
 
 
 class SchoolRetrieveListView(viewsets.ViewSet):
+    serializer_class = serializers.SchoolsSerializer
 
     def list(self, request):
         queryset = models.School.objects.all()

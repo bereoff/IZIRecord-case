@@ -12,6 +12,6 @@ router.register("details", SchoolRetrieveListView,
 urlpatterns = [
     path("", include(router.urls)),
     path("available-new/", SchoolListCreateView.as_view(), name="list_create_schools"),  # NOQA
-    path("search/", SchoolsSearchListView.as_view(), name="schools_search"),  # NOQA
+    path("by_name/", SchoolsSearchListView.as_view(), name="schools_search"),  # NOQA
     path("school/<uuid:pk>/", SchoolDestroyView.as_view(), name="school_delete"),  # NOQA
 ]

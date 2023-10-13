@@ -8,6 +8,7 @@ from schools.models import School
 
 
 class StudentsRetrieveListView(viewsets.ViewSet):
+    serializer_class = serializers.StudentsSerializer
 
     def list(self, request):
         queryset = models.Student.objects.all()
@@ -61,6 +62,7 @@ class StudentDestroyView(generics.DestroyAPIView):
 
 
 class StudentsSearchListView(views.APIView):
+    serializer_class = serializers.StudentsSerializer
 
     def get(self, request):
         queryset = models.Student.objects.all()
