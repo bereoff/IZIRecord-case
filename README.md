@@ -3,8 +3,8 @@
 The following steps will be presented for the local project usage.
 
 Prerequisites:
-Docker
-Docker-Compose
+- Docker
+- Docker-Compose
 
 First, you need to identify the local directory where the project repository will be cloned.
 
