@@ -6,4 +6,7 @@ set -e
 echo "Apply database migrations"
 python manage.py migrate
 
+echo "Apply test pipeline"
+python -m pytest
+
 $@
