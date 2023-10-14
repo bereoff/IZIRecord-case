@@ -1,3 +1,5 @@
+import json
+
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIClient, APITestCase
@@ -159,3 +161,38 @@ class StudentDeleteRecordsTestCase(APITestCase):
         response = self.client.delete(
             reverse("student_delete", kwargs={"pk": self.student_id}))
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+
+class StudentUpdateRecordsTestCase(APITestCase):
+
+    """
+    Test to update Student objects
+    """
+
+    def setUp(self):
+        self.school = School.objects.create(
+            name="Valencia School", maximum_capacity=400)
+
+        self.student = Student.objects.create(
+            first_name="Francisco",
+            last_name="Tárrega",
+            grade="n/a",
+            school=self.school)
+
+        self.valid_payload = {
+            "first_name": "Francisco",
+            "last_name": "Tárrega",
+            "grade": "200-AAA",
+            "school": str(self.school.id)
+        }
+
+    def test_update_student(self):
+        """
+        test SchoolUpdateView retrieve method
+        """
+        response = self.client.put(
+            reverse('student_update', kwargs={'pk': self.student.pk}),
+            data=json.dumps(self.valid_payload),
+            content_type='application/json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
