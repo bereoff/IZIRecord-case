@@ -86,3 +86,16 @@ $ docker-compose exec django python -m pytest
 ```
 
 And whenever the services start, the test pipeline is executed.
+
+> ## Data Loading
+
+Two commands were created for data loading for testing in both apps, and to perform the execution, it is necessary for the services to be up and running.
+
+Execution commands:
+
+```
+$ docker-compose exec django ./manage.py students_load
+$ docker-compose exec django ./manage.py schools_load
+```
+
+
