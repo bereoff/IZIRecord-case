@@ -76,3 +76,13 @@ $ http://0.0.0.0:8000/api/schema/docs/
 ![API Swagger](https://github.com/bereoff/IZIRecord-case/blob/main/images/swagger-page.png)
 
 ---
+
+> ## Test
+
+To run the tests manually, it is necessary to have the services running and execute the following command:
+
+```
+$ docker-compose exec django python -m pytest
+```
+
+And whenever the services start, the test pipeline is executed.
