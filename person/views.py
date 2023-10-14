@@ -61,6 +61,14 @@ class StudentDestroyView(generics.DestroyAPIView):
         return response.Response(data={"msg": "successefully deleted"}, status=status.HTTP_204_NO_CONTENT)  # NOQA
 
 
+class StudentUpdateView(generics.UpdateAPIView):
+    queryset = models.Student.objects.all()
+    serializer_class = serializers.StudentsSerializer
+
+    def put(self, request, *args, **kwargs):
+        return super().put(request, *args, **kwargs)
+
+
 class StudentsSearchListView(views.APIView):
     serializer_class = serializers.StudentsSerializer
 
