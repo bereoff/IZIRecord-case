@@ -2,7 +2,8 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 from .views import (SchoolDestroyView, SchoolListCreateView,
-                    SchoolRetrieveListView, SchoolsSearchListView)
+                    SchoolRetrieveListView, SchoolsSearchListView,
+                    SchoolUpdateView)
 
 router = DefaultRouter()
 
@@ -14,4 +15,5 @@ urlpatterns = [
     path("available-new/", SchoolListCreateView.as_view(), name="list_create_schools"),  # NOQA
     path("by_name/", SchoolsSearchListView.as_view(), name="schools_search"),  # NOQA
     path("school/<uuid:pk>/", SchoolDestroyView.as_view(), name="school_delete"),  # NOQA
+    path("school-modification/<uuid:pk>/", SchoolUpdateView.as_view(), name="school_update"),  # NOQA
 ]
