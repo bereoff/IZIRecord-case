@@ -24,4 +24,5 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python -m pytest
+        docker-compose exec django python -m pytest
+
