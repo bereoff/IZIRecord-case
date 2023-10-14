@@ -2,7 +2,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIClient, APITestCase
 
-from .models import School
+from ..models import School
 
 
 class SchoolCreateRecordTestCase(APITestCase):
@@ -19,7 +19,7 @@ class SchoolCreateRecordTestCase(APITestCase):
         }]
         self.url = "/api/v1/schools/available-new/"
 
-    def test_create_contact(self):
+    def test_create_school(self):
         """
         test SchoolListCreateView create method
         """
@@ -82,5 +82,5 @@ class SchoolDeleteRecordsTestCase(APITestCase):
         """
 
         response = self.client.delete(
-            reverse("school_delete", kwargs={'pk': self.school_id}))
+            reverse("school_delete", kwargs={"pk": self.school_id}))
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
