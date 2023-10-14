@@ -24,5 +24,5 @@ urlpatterns = [
     path("api/v1/person/", include("person.urls")),
     path("api/v1/schools/", include("schools.urls")),
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
-    path("api/schema/docs/", SpectacularSwaggerView().as_view(url_name="schema")),
+    path("api/schema/docs/", SpectacularSwaggerView().as_view(url_name="schema")),  # NOQA
 ]

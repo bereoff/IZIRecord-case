@@ -58,7 +58,7 @@ class StudentDestroyView(generics.DestroyAPIView):
     def delete(self, request, *args, **kwargs):
         instance = self.get_object()
         self.perform_destroy(instance)
-        return response.Response(data={"msg": "successefully deleted"}, status=status.HTTP_204_NO_CONTENT)
+        return response.Response(data={"msg": "successefully deleted"}, status=status.HTTP_204_NO_CONTENT)  # NOQA
 
 
 class StudentsSearchListView(views.APIView):
@@ -71,11 +71,11 @@ class StudentsSearchListView(views.APIView):
             first_name = self.request.query_params.get("first_name")
             if first_name is not None:
                 queryset = queryset.filter(first_name__icontains=first_name)
-                return response.Response(serializers.StudentsSerializer(queryset, many=True).data)
+                return response.Response(serializers.StudentsSerializer(queryset, many=True).data)   # NOQA
         elif "last_name" in request_path:
             last_name = self.request.query_params.get("last_name")
             if last_name is not None:
                 queryset = queryset.filter(last_name__icontains=last_name)
-                return response.Response(serializers.StudentsSerializer(queryset, many=True).data)
+                return response.Response(serializers.StudentsSerializer(queryset, many=True).data)   # NOQA
 
-        return response.Response(data={"msg": "no terms were given"}, status=status.HTTP_400_BAD_REQUEST)
+        return response.Response(data={"msg": "no terms were given"}, status=status.HTTP_400_BAD_REQUEST)   # NOQA

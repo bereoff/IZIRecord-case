@@ -37,7 +37,7 @@ class StudentCreateOneRecordTestCase(APITestCase):
 class StudentCreateMultipleRecordTestCase(APITestCase):
 
     """
-    Test to create multiple Students objects according to 
+    Test to create multiple Students objects according to
     business rule.
     """
 
@@ -69,7 +69,7 @@ class StudentCreateMultipleRecordTestCase(APITestCase):
 class StudentNotCreateRecordTestCase(APITestCase):
 
     """
-    Test to create multiple Students objects according to 
+    Test to create multiple Students objects according to
     business rule.
     """
 

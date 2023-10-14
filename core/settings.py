@@ -136,7 +136,7 @@ REST_FRAMEWORK = {
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "IZI Record Test API",
-    "DESCRIPTION": "Proposed project for technical evaluation in a selection process.",
+    "DESCRIPTION": "Proposed project for technical evaluation in a selection process.",  # NOQA
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
     "SWAGGER_UI_DIST": "SIDECAR",  # shorthand to use the sidecar instead

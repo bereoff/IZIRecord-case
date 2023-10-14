@@ -41,7 +41,7 @@ class SchoolDestroyView(generics.DestroyAPIView):
     def delete(self, request, *args, **kwargs):
         instance = self.get_object()
         self.perform_destroy(instance)
-        return response.Response(data={"msg": "successefully deleted"}, status=status.HTTP_204_NO_CONTENT)
+        return response.Response(data={"msg": "successefully deleted"}, status=status.HTTP_204_NO_CONTENT)   # NOQA
 
 
 class SchoolRetrieveListView(viewsets.ViewSet):
