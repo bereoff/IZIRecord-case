@@ -33,32 +33,19 @@ During the process, database migrations will be applied.
 
 After this process is completed and the services are running, to access the Django admin and make requests to the documentation that comes with this API, you need to create a superuser.
 
-Execute the following commands:
+Execute the following commands to confirm that the services are running (depending on your version of docker compose):
+
 ```
-$ docker container ls
+$ docker-compose ps
 ```
 
 The following output will be displayed:
 
-![List of containers](https://github.com/bereoff/IZIRecord-case/blob/main/images/docker-container-ls-command.png)
-
-Use the container name referring to the Django application in the following command:
-```
-$ docker exec -it izirecord-case-django-1 bash
-```
-
-From this point on, you will be directly accessing the container in your terminal, and in this environment, you will create the user.
-
-Perform the following test to confirm that the dependencies have been loaded:
-```
-$ ./manage.py --help
-```
-
-Additional commands to Django standards should be displayed.
+![List of services](https://github.com/bereoff/IZIRecord-case/blob/main/images/docker-compose-ps-command.png)
 
 Execute the following command to create a superuser:
 ```
-$ ./manage.py createsuperuser --username=<your_username> --email=<your_email>
+$ docker-compose exec django ./manage.py createsuperuser --username=<your_username> --email=<your_email>
 ```
 
 After executing this command, you will need to enter a password and confirm it. Avoid losing this password; otherwise, you will no longer have access to the user, and a new one will need to be created.
