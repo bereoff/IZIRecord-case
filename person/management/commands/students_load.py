@@ -42,6 +42,6 @@ class Command(BaseCommand):
                 Student.objects.create(**student)
 
             print(54 * "#" + " " + " Students Successefully Created" + " " + 54 * "#")   # NOQA
-            print(54 * "#" + 6 * " " + "Total Schools Created" + 6 * " " + 54 * "#")   # NOQA
+            print(54 * "#" + " " + " Schools Successefully Created" + 2 * " " + 54 * "#")   # NOQA
         except Exception as e:
             raise e
